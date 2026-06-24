@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #ffffff;
+  --green-primary: #32FF32;
+  --green-secondary: #00D26A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-green-primary: var(--green-primary);
+  --color-green-secondary: var(--green-secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #050505;
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px #32FF3240, 0 0 40px #32FF3220; }
+  50% { box-shadow: 0 0 30px #32FF3260, 0 0 60px #32FF3240; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+.float { animation: float 6s ease-in-out infinite; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(50, 255, 50, 0.1);
+}
+
+.glass-hover:hover {
+  background: rgba(50, 255, 50, 0.05);
+  border-color: rgba(50, 255, 50, 0.3);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #32FF32, #00D26A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.green-glow {
+  text-shadow: 0 0 30px #32FF3280;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #32FF32, #00D26A);
+  color: #050505;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 30px #32FF3260, 0 0 60px #32FF3240;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(50, 255, 50, 0.3);
+  color: #32FF32;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: #32FF32;
+  background: rgba(50, 255, 50, 0.1);
+  box-shadow: 0 0 20px #32FF3240;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(50, 255, 50, 0.3), transparent);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #32FF3240; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #32FF3280; }
+
+* { scroll-behavior: smooth; }
