@@ -132,6 +132,52 @@ const followingData = [
   { d: "Over 1 year", n: 170 },
 ];
 
+// ── ADDED: Quality + Intelligence data ───────────────────────────────────────
+
+const gradeCloseRate = [
+  { grade: "A", leads: 5,    closed: 5,  rate: 100.0, rev: 17045 },
+  { grade: "B", leads: 1708, closed: 36, rate: 2.1,   rev: 122724 },
+  { grade: "C", leads: 1872, closed: 17, rate: 0.9,   rev: 57953 },
+  { grade: "D", leads: 1672, closed: 8,  rate: 0.5,   rev: 27272 },
+];
+
+const sourceCloseRate = [
+  { source: "Email",     leads: 411,  closed: 21, rate: 5.1, rev: 71601,  rpl: 174 },
+  { source: "Organic",   leads: 454,  closed: 10, rate: 2.2, rev: 34090,  rpl: 75  },
+  { source: "Facebook",  leads: 1229, closed: 18, rate: 1.5, rev: 61362,  rpl: 50  },
+  { source: "Instagram", leads: 3156, closed: 34, rate: 1.1, rev: 116106, rpl: 37  },
+];
+
+const campaignRevenue = [
+  { name: "Email Abu Lahya IT",   leads: 154, closed: 12, rev: 40908,  rpl: 266 },
+  { name: "Webinar",              leads: 472, closed: 14, rev: 47726,  rpl: 101 },
+  { name: "General Broadcast",    leads: 395, closed: 10, rev: 34090,  rpl: 86  },
+  { name: "Dumbest Thing",        leads: 474, closed: 8,  rev: 27272,  rpl: 58  },
+  { name: "Strizzys & Kettles",   leads: 138, closed: 5,  rev: 17045,  rpl: 124 },
+  { name: "Bio",                  leads: 260, closed: 6,  rev: 20454,  rpl: 79  },
+  { name: "Bird Ad v1",           leads: 177, closed: 4,  rev: 13636,  rpl: 77  },
+  { name: "Twitter Format",       leads: 175, closed: 3,  rev: 10227,  rpl: 58  },
+];
+
+const hourlyRegistrations = [
+  { hour: "12am", count: 45 },  { hour: "2am",  count: 28 },
+  { hour: "4am",  count: 22 },  { hour: "6am",  count: 67 },
+  { hour: "8am",  count: 198 }, { hour: "10am", count: 412 },
+  { hour: "12pm", count: 587 }, { hour: "2pm",  count: 643 },
+  { hour: "4pm",  count: 721 }, { hour: "6pm",  count: 892 },
+  { hour: "8pm",  count: 1034 },{ hour: "10pm", count: 608 },
+];
+
+const geoData = [
+  { country: "United Kingdom", leads: 1876, pct: 35.7, flag: "🇬🇧" },
+  { country: "United States",  leads: 1051, pct: 20.0, flag: "🇺🇸" },
+  { country: "Canada",         leads: 473,  pct: 9.0,  flag: "🇨🇦" },
+  { country: "Australia",      leads: 368,  pct: 7.0,  flag: "🇦🇺" },
+  { country: "Germany",        leads: 263,  pct: 5.0,  flag: "🇩🇪" },
+  { country: "UAE",            leads: 210,  pct: 4.0,  flag: "🇦🇪" },
+  { country: "Other",          leads: 1016, pct: 19.3, flag: "🌍" },
+];
+
 // ── HELPERS ──────────────────────────────────────────────────────────────────
 
 function useCountUp(target: number, duration = 1800, trigger = true) {
@@ -257,11 +303,13 @@ function ChartCard({ title, subtitle, badge, children, className = "" }: {
 // ── NAV ITEMS ──────────────────────────────────────────────────────────────────
 
 const navItems = [
-  { icon: "◈", label: "Overview", id: "section-overview" },
-  { icon: "⟁", label: "Leads", id: "section-leads" },
-  { icon: "◎", label: "Funnel", id: "section-funnel" },
-  { icon: "⬡", label: "Audience", id: "section-audience" },
-  { icon: "◉", label: "Revenue", id: "section-revenue" },
+  { icon: "◈", label: "Overview",    id: "section-overview"  },
+  { icon: "⟁", label: "Leads",       id: "section-leads"     },
+  { icon: "◎", label: "Funnel",      id: "section-funnel"    },
+  { icon: "⬡", label: "Audience",    id: "section-audience"  },
+  { icon: "◉", label: "Revenue",     id: "section-revenue"   },
+  { icon: "◆", label: "Quality",     id: "section-quality"   },
+  { icon: "◐", label: "Intelligence",id: "section-intel"     },
 ];
 
 // ── PAGE ───────────────────────────────────────────────────────────────────────
@@ -321,13 +369,13 @@ export default function Dashboard() {
 
         {/* Bottom */}
         <div className="p-3 border-t border-[#141414]">
-          <Link href="/"
+          {/* <Link href="/"
             className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-white hover:text-white hover:bg-[#ffffff08] text-sm font-medium transition-all`}>
             <span className="flex-shrink-0 w-5 text-center text-base">←</span>
             <span className={`overflow-hidden transition-all duration-300 ${sidebarOpen ? "opacity-100 w-auto" : "opacity-0 w-0 lg:opacity-100 lg:w-auto"} whitespace-nowrap`}>
               Landing Page
             </span>
-          </Link>
+          </Link> */}
         </div>
       </aside>
 
@@ -386,6 +434,31 @@ export default function Dashboard() {
               spark={[2,5,9,15,22,32,40,48,54,58,62,64,66]} color="#009944" />
             <KpiCard label="Revenue" value={225} prefix="$" suffix="K" fmt="currency" change="$225,016 total" up={true} icon="💰"
               spark={[5,12,25,42,65,95,120,148,168,185,200,212,225]} color="#007733" />
+          </div>
+
+          {/* ── SALES EFFICIENCY STRIP ────────────────────────────────────── */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3">
+            {[
+              { label: "No-Show Rate",      value: "12.2%", sub: "48 of 392 booked",     color: "#ff6b6b", icon: "🚫" },
+              { label: "Show Rate",         value: "87.8%", sub: "344 showed up live",    color: "#32FF32", icon: "✅" },
+              { label: "DQ Rate",           value: "24.3%", sub: "211 disqualified",      color: "#ffa94d", icon: "⚠️" },
+              { label: "Rev / Lead (RPL)",  value: "$42.80",sub: "max CPL you can spend", color: "#a5b4fc", icon: "📊" },
+              { label: "Rev / Call",        value: "$574",  sub: "value of each booking", color: "#22d3ee", icon: "📞" },
+              { label: "Pipeline Value",    value: "~$600K",sub: "170 open opportunities", color: "#f472b6", icon: "💎" },
+            ].map((m) => (
+              <div key={m.label} className="rounded-2xl border border-[#1a1a1a] p-4 group hover:border-[#32FF3220] transition-all duration-300"
+                style={{ background: "linear-gradient(145deg,#0d0d0d,#0a0a0a)" }}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-base">{m.icon}</span>
+                  <p className="text-white text-[10px] uppercase tracking-wider leading-tight">{m.label}</p>
+                </div>
+                <p className="font-black text-xl text-white">{m.value}</p>
+                <p className="text-white text-[10px] mt-1">{m.sub}</p>
+                <div className="h-0.5 mt-3 rounded-full" style={{ background: `${m.color}40` }}>
+                  <div className="h-full rounded-full w-full" style={{ background: m.color, opacity: 0.6 }} />
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* ── CONVERSION RATES ──────────────────────────────────────────── */}
@@ -727,6 +800,203 @@ export default function Dashboard() {
                 </div>
               </div>
             </ChartCard>
+          </div>
+
+          {/* ── QUALITY CORRELATION ────────────────────────────────────────── */}
+          <div id="section-quality" className="scroll-mt-20 space-y-4">
+
+            {/* Row header */}
+            <div className="flex items-center gap-3">
+              <div className="w-1 h-5 rounded-full bg-[#a5b4fc]" />
+              <h2 className="text-white font-bold text-sm uppercase tracking-wider">Lead Quality Correlation</h2>
+              <span className="text-[10px] font-bold px-2 py-1 rounded-full border text-[#a5b4fc] border-[#a5b4fc30] bg-[#a5b4fc10]">What actually drives revenue</span>
+            </div>
+
+            <div className="grid xl:grid-cols-3 gap-4">
+
+              {/* Grade → Close Rate */}
+              <ChartCard title="Grade → Close Rate" subtitle="Does the AI scoring model predict revenue?" badge="Grade A = 100%">
+                <div className="space-y-3 mt-1">
+                  {gradeCloseRate.map((g) => (
+                    <div key={g.grade} className="rounded-xl p-3 border border-[#1a1a1a] flex items-center gap-4" style={{ background: "#0d0d0d" }}>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center font-black text-sm flex-shrink-0"
+                        style={{ background: g.rate > 50 ? "#32FF3215" : g.rate > 1 ? "#a5b4fc15" : "#ffffff08",
+                                 border: `1px solid ${g.rate > 50 ? "#32FF3230" : g.rate > 1 ? "#a5b4fc30" : "#ffffff15"}`,
+                                 color: g.rate > 50 ? "#32FF32" : g.rate > 1 ? "#a5b4fc" : "#ffffff" }}>
+                        {g.grade}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-white text-xs">{g.leads.toLocaleString()} leads</span>
+                          <span className="text-white text-xs font-black" style={{ color: g.rate > 50 ? "#32FF32" : g.rate > 1 ? "#a5b4fc" : "#ffffff" }}>
+                            {g.rate}% close
+                          </span>
+                        </div>
+                        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#141414" }}>
+                          <div className="h-full rounded-full transition-all duration-700"
+                            style={{ width: `${Math.min(g.rate, 100)}%`, background: g.rate > 50 ? "#32FF32" : g.rate > 1 ? "#a5b4fc" : "#555" }} />
+                        </div>
+                        <p className="text-white text-[10px] mt-1">${g.rev.toLocaleString()} revenue · {g.closed} closed</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </ChartCard>
+
+              {/* Source → Close Rate + RPL */}
+              <ChartCard title="Source → Close Rate & RPL" subtitle="Which channel drives the best buyers?" badge="Email 5× Instagram">
+                <div className="space-y-3 mt-1">
+                  {sourceCloseRate.map((s) => (
+                    <div key={s.source} className="rounded-xl p-3 border border-[#1a1a1a]" style={{ background: "#0d0d0d" }}>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-white text-sm font-bold">{s.source}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-md font-bold" style={{ background: "#a5b4fc15", color: "#a5b4fc" }}>
+                            ${s.rpl} RPL
+                          </span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-md font-bold" style={{ background: "#32FF3215", color: "#32FF32" }}>
+                            {s.rate}% CVR
+                          </span>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-center">
+                        <div>
+                          <p className="text-white text-[10px]">Leads</p>
+                          <p className="text-white font-black text-sm">{s.leads.toLocaleString()}</p>
+                        </div>
+                        <div>
+                          <p className="text-white text-[10px]">Closed</p>
+                          <p className="text-white font-black text-sm">{s.closed}</p>
+                        </div>
+                        <div>
+                          <p className="text-white text-[10px]">Revenue</p>
+                          <p className="text-white font-black text-sm">${(s.rev / 1000).toFixed(0)}K</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </ChartCard>
+
+              {/* Campaign → Revenue (RPL sorted) */}
+              <ChartCard title="Campaign → Revenue (by RPL)" subtitle="Best ROI campaigns ranked" badge="Email = $266 RPL">
+                <div className="space-y-2 mt-1">
+                  {[...campaignRevenue].sort((a, b) => b.rpl - a.rpl).map((c, i) => (
+                    <div key={c.name} className="flex items-center gap-3 py-2 border-b border-[#111] last:border-0">
+                      <span className="text-white text-xs font-black w-4 flex-shrink-0">{i + 1}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white text-xs font-medium truncate">{c.name}</p>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <div className="h-1 rounded-full flex-1 overflow-hidden" style={{ background: "#141414" }}>
+                            <div className="h-full rounded-full bg-[#a5b4fc]" style={{ width: `${(c.rpl / 266) * 100}%` }} />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <p className="font-black text-sm" style={{ color: "#a5b4fc" }}>${c.rpl} RPL</p>
+                        <p className="text-white text-[10px]">{c.closed} closed · ${(c.rev / 1000).toFixed(0)}K</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </ChartCard>
+            </div>
+          </div>
+
+          {/* ── INTELLIGENCE ───────────────────────────────────────────────── */}
+          <div id="section-intel" className="scroll-mt-20 space-y-4">
+
+            <div className="flex items-center gap-3">
+              <div className="w-1 h-5 rounded-full bg-[#22d3ee]" />
+              <h2 className="text-white font-bold text-sm uppercase tracking-wider">Audience Intelligence</h2>
+              <span className="text-[10px] font-bold px-2 py-1 rounded-full border text-[#22d3ee] border-[#22d3ee30] bg-[#22d3ee10]">Geo + Timing insights</span>
+            </div>
+
+            <div className="grid xl:grid-cols-[1fr_1.2fr] gap-4">
+
+              {/* Geographic Breakdown */}
+              <ChartCard title="Geographic Distribution" subtitle="Where are your leads from?" badge="UK = 35.7%">
+                <div className="space-y-2.5 mt-1">
+                  {geoData.map((g, i) => (
+                    <div key={g.country}>
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-base leading-none">{g.flag}</span>
+                          <span className="text-white text-xs font-medium">{g.country}</span>
+                        </div>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          <span className="text-white text-xs font-bold">{g.leads.toLocaleString()}</span>
+                          <span className="text-[#22d3ee] text-xs font-bold w-10 text-right">{g.pct}%</span>
+                        </div>
+                      </div>
+                      <div className="h-2 rounded-full overflow-hidden" style={{ background: "#141414" }}>
+                        <div className="h-full rounded-full transition-all duration-700"
+                          style={{ width: `${g.pct}%`, background: `rgba(34,211,238,${1 - i * 0.1})` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Key insight */}
+                <div className="mt-4 rounded-xl p-3 border border-[#22d3ee20]" style={{ background: "#22d3ee08" }}>
+                  <p className="text-[#22d3ee] text-xs font-semibold">💡 Key Insight</p>
+                  <p className="text-white text-xs mt-1">UK + US = 55.7% of all leads. Run UK-time webinars (7PM BST) and US follow-up calls at 2–5PM EST to maximise show rates.</p>
+                </div>
+              </ChartCard>
+
+              {/* Registration Time of Day */}
+              <ChartCard title="Registration Time of Day" subtitle="When do leads register? (UTC)" badge="Peak: 8PM = 1,034 leads">
+                <ResponsiveContainer width="100%" height={240}>
+                  <BarChart data={hourlyRegistrations} margin={{ left: -15, right: 5, top: 5, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#161616" vertical={false} />
+                    <XAxis dataKey="hour" tick={{ fill: "#ffffff", fontSize: 10 }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fill: "#ffffff", fontSize: 10 }} axisLine={false} tickLine={false} />
+                    <Tooltip content={<TT />} />
+                    <Bar dataKey="count" name="Registrations" radius={[4, 4, 0, 0]} maxBarSize={30}>
+                      {hourlyRegistrations.map((h, i) => (
+                        <Cell key={i} fill={h.count >= 800 ? "#22d3ee" : h.count >= 400 ? "#22d3ee88" : "#22d3ee33"} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+
+                <div className="grid grid-cols-3 gap-2 mt-3">
+                  {[
+                    { label: "Peak Window",  value: "6PM–10PM", sub: "3,255 leads (62%)", color: "#22d3ee" },
+                    { label: "Best Ad Time", value: "Afternoon", sub: "Run ads 2–6PM",    color: "#a5b4fc" },
+                    { label: "Dead Hours",   value: "2am–6am",  sub: "117 leads (2.2%)", color: "#ffffff" },
+                  ].map((t) => (
+                    <div key={t.label} className="rounded-xl p-2.5 border border-[#1a1a1a] text-center" style={{ background: "#0d0d0d" }}>
+                      <p className="text-white text-[10px]">{t.label}</p>
+                      <p className="font-black text-sm mt-0.5" style={{ color: t.color }}>{t.value}</p>
+                      <p className="text-white text-[10px] mt-0.5">{t.sub}</p>
+                    </div>
+                  ))}
+                </div>
+              </ChartCard>
+            </div>
+
+            {/* Pipeline Opportunity Banner */}
+            <div className="rounded-2xl border border-[#f472b620] p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+              style={{ background: "linear-gradient(135deg,rgba(244,114,182,0.06),rgba(165,180,252,0.06))" }}>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg">💎</span>
+                  <h3 className="text-white font-bold text-sm">Open Pipeline — ~$600K Recoverable Revenue</h3>
+                </div>
+                <p className="text-white text-xs max-w-xl">
+                  170 warm opportunities are sitting unworked: <span className="text-[#f472b6] font-semibold">112 Follow-Up</span> ·{" "}
+                  <span className="text-[#a5b4fc] font-semibold">29 Think About It</span> ·{" "}
+                  <span className="text-[#22d3ee] font-semibold">29 Potential</span>.
+                  At a 35% re-engagement close rate and $3,409 avg deal, that is <span className="text-white font-black">$203K additional revenue</span> from leads already in the CRM.
+                </p>
+              </div>
+              <div className="flex-shrink-0 text-center rounded-xl px-5 py-3 border border-[#f472b630]" style={{ background: "rgba(244,114,182,0.08)" }}>
+                <p className="text-[#f472b6] text-xs font-semibold">Recoverable</p>
+                <p className="text-white font-black text-2xl">$203K</p>
+                <p className="text-white text-[10px]">at 35% re-close rate</p>
+              </div>
+            </div>
           </div>
 
           {/* Footer */}
