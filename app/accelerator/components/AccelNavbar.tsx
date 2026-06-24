@@ -61,12 +61,12 @@ export default function AccelNavbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a
+          {/* <a
             href="/dashboard"
             className="text-sm font-medium text-white opacity-40 hover:opacity-70 transition-opacity"
           >
             Dashboard
-          </a>
+          </a> */}
           <a
             href="#register"
             className="px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300"
@@ -108,13 +108,13 @@ export default function AccelNavbar() {
               {l.label}
             </a>
           ))}
-          <a
+          {/* <a
             href="/dashboard"
             className="block py-3 text-sm font-medium text-white opacity-40"
             onClick={() => setOpen(false)}
           >
             Dashboard
-          </a>
+          </a> */}
           <a
             href="#register"
             className="mt-4 block text-center py-3.5 rounded-xl text-sm font-bold text-white"
