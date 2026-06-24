@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -123,16 +123,23 @@ export default function RegistrationForm() {
             <span className="text-[#32FF32] text-sm font-medium">Limited Seats · Next Cohort</span>
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-3 leading-tight">
-            Reserve Your Spot In The{" "}
-            <span className="gradient-text">5-Day Challenge</span>
+            Register Your Spot Now
           </h2>
-          <p className="text-[#ffffff60] text-base">
-            Free to join. Live sessions. Real framework. Takes 60 seconds to register.
+          <p className="text-[#ffffff] text-base">
+            Just enter your name, email &amp; number to lock in your free seat. Replays are <span className="text-white font-semibold">NOT guaranteed</span> — show up live.
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="glass rounded-2xl border border-[#32FF3220] overflow-hidden">
+        <div className="rounded-2xl border border-[#32FF3220] overflow-hidden" style={{ background: "rgba(10,10,10,0.95)" }}>
+          {/* Trust strip header */}
+          <div className="flex items-center justify-center gap-4 sm:gap-6 px-5 py-3 border-b border-[#32FF3215]" style={{ background: "rgba(50,255,50,0.04)" }}>
+            {[{ icon: "★", text: "100% Free" }, { icon: "💻", text: "Live On Zoom" }, { icon: "⏱", text: "5 Day Live" }].map((item) => (
+              <span key={item.text} className="flex items-center gap-1.5 text-white text-xs font-medium">
+                <span className="text-[#32FF32]">{item.icon}</span> {item.text}
+              </span>
+            ))}
+          </div>
           {/* Progress bar — only on survey */}
           {step === "survey" && (
             <div className="h-1 bg-[#32FF3215]">
@@ -156,7 +163,7 @@ export default function RegistrationForm() {
                     placeholder="Your full name"
                     value={formData.name}
                     onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
-                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-[#ffffff30] outline-none focus:border-[#32FF32] transition-colors ${
+                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-white outline-none focus:border-[#32FF32] transition-colors ${
                       errors.name ? "border-red-500" : "border-[#32FF3220]"
                     }`}
                   />
@@ -172,7 +179,7 @@ export default function RegistrationForm() {
                     placeholder="your@email.com"
                     value={formData.email}
                     onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
-                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-[#ffffff30] outline-none focus:border-[#32FF32] transition-colors ${
+                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-white outline-none focus:border-[#32FF32] transition-colors ${
                       errors.email ? "border-red-500" : "border-[#32FF3220]"
                     }`}
                   />
@@ -188,7 +195,7 @@ export default function RegistrationForm() {
                     placeholder="+1 234 567 8900"
                     value={formData.phone}
                     onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
-                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-[#ffffff30] outline-none focus:border-[#32FF32] transition-colors ${
+                    className={`w-full bg-[#0a0a0a] border rounded-xl px-4 py-3 text-white text-sm placeholder:text-white outline-none focus:border-[#32FF32] transition-colors ${
                       errors.phone ? "border-red-500" : "border-[#32FF3220]"
                     }`}
                   />
@@ -202,7 +209,7 @@ export default function RegistrationForm() {
                   Save My Free Seat →
                 </button>
 
-                <p className="text-center text-[#ffffff30] text-xs pt-1">
+                <p className="text-center text-white text-xs pt-1">
                   🔒 No spam. No credit card. Unsubscribe anytime.
                 </p>
               </form>
@@ -217,7 +224,7 @@ export default function RegistrationForm() {
                   </span>
                   <button
                     onClick={() => setStep("done")}
-                    className="text-[#ffffff30] text-xs hover:text-[#ffffff60] transition-colors"
+                    className="text-white text-xs hover:text-[#ffffff] transition-colors"
                   >
                     Skip →
                   </button>
@@ -232,7 +239,7 @@ export default function RegistrationForm() {
                     <button
                       key={option}
                       onClick={() => handleAnswer(option)}
-                      className="w-full text-left px-4 py-3.5 rounded-xl border border-[#32FF3220] text-[#ffffff80] text-sm font-medium hover:border-[#32FF32] hover:text-white hover:bg-[#32FF3210] transition-all duration-200 flex items-center gap-3 group"
+                      className="w-full text-left px-4 py-3.5 rounded-xl border border-[#32FF3220] text-white text-sm font-medium hover:border-[#32FF32] hover:text-white hover:bg-[#32FF3210] transition-all duration-200 flex items-center gap-3 group"
                     >
                       <span className="w-4 h-4 rounded-full border border-[#32FF3240] group-hover:border-[#32FF32] group-hover:bg-[#32FF3220] flex-shrink-0 transition-all" />
                       {option}
@@ -257,7 +264,7 @@ export default function RegistrationForm() {
                   <span className="text-black text-2xl font-black">✓</span>
                 </div>
                 <h3 className="text-white font-black text-2xl mb-2">You&apos;re Registered!</h3>
-                <p className="text-[#ffffff60] text-sm mb-6 leading-relaxed">
+                <p className="text-[#ffffff] text-sm mb-6 leading-relaxed">
                   Check your email — we&apos;ll send the session details and a calendar invite.
                   <br />
                   See you in the live sessions, <span className="text-[#32FF32] font-semibold">{formData.name.split(" ")[0]}</span>.
@@ -272,7 +279,7 @@ export default function RegistrationForm() {
                       "💬 Access to private pre-challenge community",
                       "🔔 Reminder 1 hour before each session",
                     ].map((item) => (
-                      <div key={item} className="flex items-start gap-2 text-[#ffffff60] text-xs">
+                      <div key={item} className="flex items-start gap-2 text-[#ffffff] text-xs">
                         <span className="mt-0.5 flex-shrink-0">{item.split(" ")[0]}</span>
                         <span>{item.split(" ").slice(1).join(" ")}</span>
                       </div>
@@ -282,7 +289,7 @@ export default function RegistrationForm() {
 
                 <button
                   onClick={() => { setStep("contact"); setSurveyStep(0); setFormData({ name: "", email: "", phone: "", answers: {} }); }}
-                  className="text-[#ffffff40] text-xs hover:text-[#ffffff60] transition-colors"
+                  className="text-white text-xs hover:text-[#ffffff] transition-colors"
                 >
                   Register another person
                 </button>
@@ -300,7 +307,7 @@ export default function RegistrationForm() {
               { icon: "⏱", text: "90 Min Sessions" },
               { icon: "✅", text: "100% Free" },
             ].map((item) => (
-              <div key={item.text} className="flex items-center gap-1.5 text-[#ffffff40] text-xs">
+              <div key={item.text} className="flex items-center gap-1.5 text-white text-xs">
                 <span>{item.icon}</span>
                 <span>{item.text}</span>
               </div>

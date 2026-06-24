@@ -44,6 +44,13 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <Link
+              href="/accelerator"
+              className="text-sm font-medium transition-colors"
+              style={{ color: "rgba(255,255,255,0.5)" }}
+            >
+              Accelerator
+            </Link>
+            <Link
               href="/dashboard"
               className="text-[#32FF32] text-sm font-medium hover:text-[#00D26A] transition-colors"
             >

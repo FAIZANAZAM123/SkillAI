@@ -1,29 +1,33 @@
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import TrustSection from "./components/TrustSection";
-import WhatYouLearnSection from "./components/WhatYouLearnSection";
-import ChallengeBreakdown from "./components/ChallengeBreakdown";
-import TestimonialsSection from "./components/TestimonialsSection";
-import RegistrationForm from "./components/RegistrationForm";
-import ResultsSection from "./components/ResultsSection";
-import FAQSection from "./components/FAQSection";
-import FinalCTA from "./components/FinalCTA";
-import Footer from "./components/Footer";
+import AccelNavbar from "./accelerator/components/AccelNavbar";
+import AccelHero from "./accelerator/components/AccelHero";
+import TrustBar from "./accelerator/components/TrustBar";
+import WhyAttend from "./accelerator/components/WhyAttend";
+import Speakers from "./accelerator/components/Speakers";
+import EventTimeline from "./accelerator/components/EventTimeline";
+import SuccessStories from "./accelerator/components/SuccessStories";
+import WhatYouLearnAccel from "./accelerator/components/WhatYouLearnAccel";
+import AccelForm from "./accelerator/components/AccelForm";
+import EventDetails from "./accelerator/components/EventDetails";
+import AccelFAQ from "./accelerator/components/AccelFAQ";
+import AccelCTA from "./accelerator/components/AccelCTA";
+import AccelFooter from "./accelerator/components/AccelFooter";
 
 export default function Home() {
   return (
-    <main className="bg-[#050505] min-h-screen overflow-x-hidden">
-      <Navbar />
-      <HeroSection />
-      <TrustSection />
-      <WhatYouLearnSection />
-      <ChallengeBreakdown />
-      <TestimonialsSection />
-      <RegistrationForm />
-      <ResultsSection />
-      <FAQSection />
-      <FinalCTA />
-      <Footer />
+    <main style={{ background: "#050816", minHeight: "100vh", overflowX: "hidden" }}>
+      <AccelNavbar />
+      <AccelHero />
+      <TrustBar />
+      <WhyAttend />
+      <Speakers />
+      <EventTimeline />
+      <SuccessStories />
+      <WhatYouLearnAccel />
+      <AccelForm />
+      <EventDetails />
+      <AccelFAQ />
+      <AccelCTA />
+      <AccelFooter />
     </main>
   );
 }
